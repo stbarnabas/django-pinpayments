@@ -50,6 +50,7 @@ class CustomerToken(models.Model):
     active = models.BooleanField(_('Active'), default=True)
     card_type = models.CharField(_('Card Type'), max_length=20, blank=True, null=True, choices=CARD_TYPES, help_text=_('Determined automatically by Pin'))
     card_number = models.CharField(_('Card Number'), max_length=100, blank=True, null=True, help_text=_('Cleansed by Pin API'))
+    card_name = models.CharField(_('Name on Card'), max_length=100, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if not self.environment:
@@ -115,6 +116,7 @@ class CustomerToken(models.Model):
                 customer.environment    = environment
                 customer.card_number    = r['response']['card']['display_number']
                 customer.card_type      = r['response']['card']['scheme']
+                customer.card_name      = r['response']['card']['name']
                 customer.save()
 
                 return customer
