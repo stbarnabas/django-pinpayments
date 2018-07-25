@@ -1,3 +1,7 @@
+**This project is no longer maintained.** Do not use it for new code.
+
+---
+
 # django-pinpayments
 
 `django-pinpayments` provides helper functions for [Pin Payments](https://pin.net.au) - a relatively new Australian payment processor that doesn't require merchant accounts and that doesn't require purchasers to have an account. Some may call it the "Australian version of Stripe".
